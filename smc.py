@@ -5,16 +5,7 @@ from bs4 import BeautifulSoup
 import time
 import json
 
-from utils import save_to_excel
-
-def save_to_json(data, filename):
-    """주어진 데이터를 JSON 파일로 저장하는 함수"""
-    try:
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
-        print(f"✅ 성공! 데이터가 '{filename}' 파일로 저장되었습니다.")
-    except (IOError, TypeError) as e:
-        print(f"❌ 파일 저장 중 에러 발생: {e}")
+from utils.utils import save_to_excel, save_to_json
 
 # --- 기능 함수 1: 모든 부서 목록 가져오기 ---
 def get_smc_departments(headers):
@@ -144,7 +135,9 @@ if __name__ == "__main__":
             time.sleep(0.2)
             
         print(f"\n✅ 3단계 완료: 모든 정보 통합. 최종 데이터를 저장합니다.")
-        save_to_json(all_doctors, 'smc_doctors_final.json')
+
+        file_name = '삼성서울병원_smc'
+        save_to_json(all_doctors, file_name)
 
         # 2. utils.py의 함수를 이용해 Excel 파일로 저장
-        save_to_excel(all_doctors, 'smc_doctors_final.xlsx')
+        save_to_excel(all_doctors, file_name)

@@ -6,16 +6,7 @@ import re
 import json
 import time
 
-from utils import save_to_excel
-
-def save_to_json(data, filename):
-    """주어진 데이터를 JSON 파일로 저장하는 함수"""
-    try:
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
-        print(f"✅ 성공! 데이터가 '{filename}' 파일로 저장되었습니다.")
-    except (IOError, TypeError) as e:
-        print(f"❌ 파일 저장 중 에러 발생: {e}")
+from utils.utils import save_to_excel, save_to_json
 
 def get_snuh_department_codes():
     """서울대학교병원 메인 페이지에서 진료과 이름과 코드를 추출합니다."""
@@ -325,8 +316,9 @@ if __name__ == "__main__":
             time.sleep(0.5)  # 요청 간격을 조금 늘림
             
         print(f"\n✅ 3단계 완료: 최종적으로 {len(final_data)}명의 상세 정보를 수집했습니다.")
-        save_to_json(final_data, 'snuh_doctors_test_result.json')
 
-        save_to_excel(final_data, 'snuh_doctors_final.xlsx')
+        file_name = '서울대학교병원_snuh'
+        save_to_json(final_data, file_name)
+        save_to_excel(final_data, file_name)
     else:
         print("수집할 부서 정보가 없습니다.")
