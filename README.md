@@ -8,8 +8,8 @@ python -m venv venv
 pip install -r requirements.txt
 
 # 크롤링 가능한 병원
-아주: ajou
-서울아산병원 : amc
-서울삼성병원 : smc
-서울대학교병원 : snuh
-세브란스 연세: ys
+- 아주: ajou
+- 서울아산병원 : amc
+- 서울삼성병원 : smc
+- 서울대학교병원 : snuh
+- 세브란스 연세: ys
