@@ -19,3 +19,4 @@ pip install -r requirements.txt
 -   세브란스병원 (신촌): ys
 -   카톨릭대학교 서울성모병원 : cmc
 -   강남세브란스병원 : gs
+-   분당서울대학교병원 : snubh
